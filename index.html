@@ -1,54 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Move Box with Arrow Keys</title>
-<style>
-    #box {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expand Box with Arrow Keys</title>
+    <style>
+      #box {
         width: 50px;
         height: 50px;
         background-color: blue;
         position: absolute;
-    }
-</style>
-</head>
-<body>
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
 
-<div id="box"></div>
+    <script>
+      const box = document.getElementById("box");
+      let width = 50;
+      let height = 50;
+      const step = 10;
 
-<script>
-    const box = document.getElementById('box');
-    let posX = 0;
-    let posY = 0;
-    const step = 10;
-
-    function moveBox(direction) {
+      function expandBox(direction) {
         switch (direction) {
-            case 'ArrowUp':
-                posY -= step;
-                break;
-            case 'ArrowDown':
-                posY += step;
-                break;
-            case 'ArrowLeft':
-                posX -= step;
-                break;
-            case 'ArrowRight':
-                posX += step;
-                break;
+          case "ArrowUp":
+            height -= step;
+            break;
+          case "ArrowDown":
+            height += step;
+            break;
+          case "ArrowLeft":
+            width -= step;
+            break;
+          case "ArrowRight":
+            width += step;
+            break;
         }
-        box.style.top = posY + 'px';
-        box.style.left = posX + 'px';
-    }
+        box.style.width = width + "px";
+        box.style.height = height + "px";
+      }
 
-    document.addEventListener('keydown', function(event) {
+      document.addEventListener("keydown", function (event) {
         const key = event.key;
-        if (key.startsWith('Arrow')) {
-            moveBox(key);
+        if (key.startsWith("Arrow")) {
+          expandBox(key);
         }
-    });
-</script>
-
-</body>
+      });
+    </script>
+  </body>
 </html>
